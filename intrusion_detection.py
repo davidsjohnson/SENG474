@@ -103,8 +103,7 @@ class DataFormatting:
 			'loadmodule.': 8, 
 			'multihop.': 9, 
 			'neptune.': 10, 
-			'nmap.': 11, 
-			'normal.': 12, 
+			'nmap.': 11,
 			'perl.': 13, 
 			'phf.': 14, 
 			'pod.': 15, 
@@ -394,15 +393,15 @@ class DataParser(object):
 				count = count + 1
 
 				# test code (below) (To help identify features of the data, etc)
-				
-				# Find all of the possible protocol types, services, and flags in the data given
-				# self.protocol_types[row[DataFormatting.Mappings.features['protocol_type']]] = 1
-				# self.services[row[DataFormatting.Mappings.features['service']]] = 1
-				# self.flags[row[DataFormatting.Mappings.features['flag']]] = 1
 
-				# Show all of the data but only for the first 101 entries
-				# print row
-				# if count > 100:
+				# # Find all of the possible protocol types, services, and flags in the data given
+				# DataFormatting.Mappings.protocol_types[row[DataFormatting.Mappings.features['protocol_type']]] = 1
+				# DataFormatting.Mappings.protocol_types[row[DataFormatting.Mappings.features['service']]] = 1
+				# DataFormatting.Mappings.protocol_types[row[DataFormatting.Mappings.features['flag']]] = 1
+                #
+				# # Show all of the data but only for the first 10 entries
+				# print (row)
+				# if count > 10:
 				# 	break
 
 				# end of test code
@@ -410,9 +409,9 @@ class DataParser(object):
 			print('Loaded ' + str(count) + ' rows.')
 
 			# Prints out the found protocols, servces, and flags in the data
-			# print ('Protocols: ' + str(self.protocol_types.keys()))
-			# print ('Services: ' + str(self.services.keys()))
-			# print ('Flags: ' + str(self.flags.keys()))
+			print ('Protocols: ' + str(DataFormatting.Mappings.protocol_types.keys()))
+			print ('Services: ' + str(DataFormatting.Mappings.services.keys()))
+			print ('Flags: ' + str(DataFormatting.Mappings.flags.keys()))
 
 
 	def format_data_for_tree(self):
@@ -463,16 +462,18 @@ class DataParser(object):
 			count = count + 1
 
 			# Debug: shows what is in the row as we go though it
-			# print row
-
+			# print (row)
+            #
 			# if DataFormatting.Mappings.protocol_types[protocol_type] != 0:
 			# 	print ('type = ' + str(protocol_type) + ', value = ' + str(DataFormatting.Mappings.protocol_types[protocol_type]))
 			# 	print ('service = ' + str(service) + ', value = ' + str(DataFormatting.Mappings.services[service]))
 			# 	print ('flag = ' + str(flag) + ', value = ' + str(DataFormatting.Mappings.flags[flag]))
 			# 	print ('*'*40)
-
-			# if count > 5000:
+            #
+			# if count > 10:
 			# 	break
+
+			# End DEBUG
 
 		print ('Formatted ' + str(count) + ' rows.')
 
@@ -505,9 +506,9 @@ if __name__ == "__main__":
 	dot_data = StringIO()
 	tree.export_graphviz(decision_tree, 
 		out_file=dot_data, 
-		feature_names=DataFormatting.Mappings.features.keys(), 
-		class_names=DataFormatting.Mappings.categories.keys(), 
-		filled=True, 
+		feature_names=list(DataFormatting.Mappings.features.keys()),
+		class_names=list(DataFormatting.Mappings.categories.keys()),
+		filled=True,
 		rounded=True, 
 		special_characters=True
 		)
