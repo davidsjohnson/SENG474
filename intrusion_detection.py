@@ -1,6 +1,6 @@
 
 import csv
-import pydotplus as pydot
+# import pydotplus as pydot
 
 from sklearn import tree
 from sklearn.externals.six import StringIO
