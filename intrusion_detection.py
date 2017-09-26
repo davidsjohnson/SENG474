@@ -1,6 +1,6 @@
 
 import csv
-# import pydotplus as pydot
+import pydotplus as pydot
 
 from sklearn import tree
 from sklearn.externals.six import StringIO
@@ -368,7 +368,7 @@ class DataParser(object):
 		self.formatted_data = []
 		self.training_data = []
 		self.formatted_training_data = []
-		self.file_path = 'kddcup.data_10_percent'
+		self.file_path = 'data/kddcup.data_10_percent'
 		self.load_file(self.file_path)
 		self.format_data_for_tree()
 
@@ -506,7 +506,7 @@ if __name__ == "__main__":
 	dot_data = StringIO()
 	tree.export_graphviz(decision_tree, 
 		out_file=dot_data, 
-		feature_names=list(DataFormatting.Mappings.features.keys()),
+		feature_names=list(DataFormatting.Mappings.features.keys())[:-1],
 		class_names=list(DataFormatting.Mappings.categories.keys()),
 		filled=True,
 		rounded=True, 
@@ -514,9 +514,9 @@ if __name__ == "__main__":
 		)
 
 	graph = pydot.graph_from_dot_data(dot_data.getvalue())
-	graph.write_pdf('test.pdf')
+	graph.write_pdf('IDS_Tree_Graph.pdf')
 
-	print ('Done. Saved as test.pdf')
+	print ('Done. Saved as IDS_Tree_Graph.pdf')
 	print ('NOTE: Remember that we had to substitute integers for labels, so this graph may be hard to read.')
 
 

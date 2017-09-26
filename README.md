@@ -15,6 +15,6 @@
     * `jupyter notebook`
 5. Your web browser should automatically open to the Notebook Home Page 
     * If not, go to [http://localhost:8888/](http://localhost:8888/)
-6. Open __SENG 474 - Decision Trees and Evaluation.ipynb__
+6. Open a file with the __.ipynb__ extension
 7. Now you can modify the code in the Notebook
     * To execute a cell in the notebook enter `Shift + Enter`
