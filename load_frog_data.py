@@ -18,4 +18,4 @@ def load_frog_data():
             X.append(row[:-4])
             y.append(label_names.index(row[-2]))
 
-    return np.array(X), np.array(y)
+    return np.array(X).astype(float), np.array(y).astype(int)
