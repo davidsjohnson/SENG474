@@ -1,4 +1,5 @@
 import csv
+import codecs
 
 # Our Classes
 classes = ["spam", "ham"]
@@ -18,7 +19,7 @@ def load_spam_data():
     y = []
 
     # open the file for processing as a CSV
-    with open(file, 'r') as f:
+    with codecs.open(file, 'r') as f:
         reader = csv.reader(f)
 
         for i, row in enumerate(reader):
